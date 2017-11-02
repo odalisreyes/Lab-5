@@ -20,6 +20,7 @@ public class Aspirer {
 	protected boolean Type;
 	protected boolean Desvinculado;
 	protected double NotaHistoria;
+	protected double Escalafon;
 	
 	
 	
@@ -40,6 +41,7 @@ public class Aspirer {
 		Type = type;
 		Desvinculado = desvinculado;
 		NotaHistoria = notaHistoria;
+		Escalafon = 0;
 	}
 
 
@@ -143,6 +145,46 @@ public class Aspirer {
 	}
 	
 	
+	
+	/**
+	 * @return the Escalafon
+	 */
+	public double getEscalafon() {
+		return Escalafon;
+	}
+
+
+
+	/**
+	 * @param Escalafon the Escalafon to set
+	 */
+	public void setEscalafon(double Escalafon) {
+		this.Escalafon = Escalafon;
+	}
+	
+	
+	
+	/**
+	 * @param 
+	 * @return String con la información del objeto
+	 */
+	public String toString() {
+		String texto;
+		if (Type==false) {
+			if (Desvinculado == false) {
+				texto = "Nombre: " + Name + "\nNúmero de DPI: " + DPI + "\nTipo: Graduado de Secundaria" + "\nDesvinculado: No" + "\nNota de Historia: " + NotaHistoria + "\nNota del escalafón: " + Escalafon;
+			} else {
+				texto= "Nombre: " + Name + "\nNúmero de DPI: " + DPI + "\nTipo: Graduado de Secundaria" + "\nDesvinculado: Si" + "\nNota de Historia: " + NotaHistoria + "\nNota del escalafón: " + Escalafon;
+			}
+		} else {
+			if (Desvinculado == false) {	
+				texto = "Nombre: " + Name + "\nNúmero de DPI: " + DPI + "\nTipo: Graduado de Bachillerato" + "\nDesvinculado: No" + "\nNota de Historia: " + NotaHistoria + "\nNota del escalafón: " + Escalafon;
+			} else {
+				texto = "Nombre: " + Name + "\nNúmero de DPI: " + DPI + "\nTipo: Graduado de Bachillerato" + "\nDesvinculado: Si" + "\nNota de Historia: " + NotaHistoria + "\nNota del escalafón: " + Escalafon;
+			}
+		}
+		return texto;
+	}
 	
 	
 	
