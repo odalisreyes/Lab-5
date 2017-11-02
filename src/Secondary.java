@@ -1,7 +1,12 @@
 import java.text.DecimalFormat;
 
 /**
- * @author Javier Anleu 
+ * PROPÓSITO: Es la clase que actúa como el modelo de los alumnos graduados de secundaria. Es heredada de Aspirer y utiliza la interfaz Nota para establecer la nota
+ * en el escalafón
+ * @author Javier Anleu 7149
+ * @author Odalis Reyes 17032
+ * @version 1.0
+ * @since November 2nd, 2017. 
  *
  */
 public class Secondary extends Aspirer implements Nota{
@@ -12,14 +17,15 @@ public class Secondary extends Aspirer implements Nota{
 	
 	
 	/**
-	 * @param name
-	 * @param dPI
-	 * @param type
-	 * @param desvinculado
-	 * @param notaHistoria
-	 * @param notaMatematica
-	 * @param notaEspanol
-	 * @param notaAptitud
+	 * Es el constructor de la clase. Tiene como atributos sus parámetros
+	 * @param name Nombre del aspirante
+	 * @param dPI Número de DPI
+	 * @param type Tipo de aspirante. Todos son false, que equivale a graduados de secundaria
+	 * @param desvinculado Si el alumno es desvinculado o no
+	 * @param notaHistoria Nota del examen de historia
+	 * @param notaMatematica Nota del examen de matematica
+	 * @param notaEspanol Nota del examen de español
+	 * @param notaAptitud Nota del examen de aptitud
 	 */
 	public Secondary(String name, String dPI, double average,boolean type, boolean desvinculado, double notaHistoria,
 			double notaMatematica, double notaEspanol, double notaAptitud) {
@@ -33,6 +39,7 @@ public class Secondary extends Aspirer implements Nota{
 
 
 	/**
+	 * Getter para la nota del examen de matemática
 	 * @return the notaMatematica
 	 */
 	public double getNotaMatematica() {
@@ -43,6 +50,7 @@ public class Secondary extends Aspirer implements Nota{
 
 
 	/**
+	 * Getter para la nota del examen de español
 	 * @return the notaEspanol
 	 */
 	public double getNotaEspanol() {
@@ -53,6 +61,7 @@ public class Secondary extends Aspirer implements Nota{
 
 
 	/**
+	 * Getter para la nota del examen de aptitud
 	 * @return the notaAptitud
 	 */
 	public double getNotaAptitud() {
@@ -63,6 +72,7 @@ public class Secondary extends Aspirer implements Nota{
 
 
 	/**
+	 * Setter para la nota del examen de matemática
 	 * @param notaMatematica the notaMatematica to set
 	 */
 	public void setNotaMatematica(double notaMatematica) {
@@ -73,6 +83,7 @@ public class Secondary extends Aspirer implements Nota{
 
 
 	/**
+	 * Setter para la nota del examen de español
 	 * @param notaEspanol the notaEspanol to set
 	 */
 	public void setNotaEspanol(double notaEspanol) {
@@ -83,6 +94,7 @@ public class Secondary extends Aspirer implements Nota{
 
 
 	/**
+	 * Setter para la nota del examen de aptitud
 	 * @param notaAptitud the notaAptitud to set
 	 */
 	public void setNotaAptitud(double notaAptitud) {
@@ -92,6 +104,9 @@ public class Secondary extends Aspirer implements Nota{
 
 
 
+	/**
+	 * Método para calcular la nota del escalafón. 
+	 */
 	@Override
 	public void calcular() {
 		if (Desvinculado==false) {
