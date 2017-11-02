@@ -17,6 +17,7 @@ public class Aspirer {
 	protected ObjectId Id;
 	protected String Name;
 	protected String DPI;
+	protected double Average;
 	protected boolean Type;
 	protected boolean Desvinculado;
 	protected double NotaHistoria;
@@ -35,9 +36,10 @@ public class Aspirer {
 	 * @param desvinculado
 	 * @param notaHistoria
 	 */
-	public Aspirer(String name, String dPI, boolean type, boolean desvinculado, double notaHistoria) {
+	public Aspirer(String name, String dPI, double average, boolean type, boolean desvinculado, double notaHistoria) {
 		Name = name;
 		DPI = dPI;
+		Average = average;
 		Type = type;
 		Desvinculado = desvinculado;
 		NotaHistoria = notaHistoria;
@@ -132,6 +134,26 @@ public class Aspirer {
 	 */
 	public double getNotaHistoria() {
 		return NotaHistoria;
+	}
+
+
+
+
+	/**
+	 * @return the average
+	 */
+	public double getAverage() {
+		return Average;
+	}
+
+
+
+
+	/**
+	 * @param average the average to set
+	 */
+	public void setAverage(double average) {
+		Average = average;
 	}
 
 
