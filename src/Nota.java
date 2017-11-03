@@ -1,6 +1,7 @@
 /**
- * PROPÓSITO: Es una interfaz y tiene como propósito implementar los métodos a las demás clases que estén 
- * 			  relacionadas con esta mediante polimorfismo.
+ * PROPÓSITO: Es una interfaz y tiene como propósito implementar los métodos a
+ * las demás clases que estén relacionadas con esta mediante polimorfismo.
+ * 
  * @author Javier Anleu 17149
  * @author Odalis Reyes 17032
  * @version 1.0
