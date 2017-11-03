@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
  * secundaria. Es heredada de Aspirer y utiliza la interfaz Nota para establecer
  * la nota en el escalafón
  * 
- * @author Javier Anleu 7149
+ * @author Javier Anleu 17149
  * @author Odalis Reyes 17032
  * @version 1.0
  * @since November 2nd, 2017.

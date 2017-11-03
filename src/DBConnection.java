@@ -4,13 +4,32 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
+
+/**
+ * PROPOSITO: Es la clase que hace la conexion de SQL
+ * 
+ * @author Javier Anleu 17149
+ * @author Odalis Reyes 17032
+ * @version 1.0
+ * @since November 3nd, 2017.
+ *
+ */
 public class DBConnection {
+	
+	/* ATRIBUTOS */
 	private String user = "root";
 	private String pass = "NoGameNoLife1998";
 	private static String db = "escalafon";
 	static String url = "jdbc:mysql://localhost" + db;
 	private Connection conn = null;
 
+	
+
+	/**
+	 * Constructor de la clase
+	 * Comprueba la conexion con la base de datos e ingresa los datos del host
+	 */
 	public DBConnection() {
 		try {
 			Class.forName("con.mysql.jdbc.Connection");
@@ -25,6 +44,13 @@ public class DBConnection {
 		}
 	}
 	
+	
+	/**
+	 * Get del Query
+	 * 
+	 * @param _query
+	 * @return resultado de tipo ResultSet
+	 */
 	public ResultSet getQuery(String _query) {
 		Statement state = null;
 		ResultSet resultado = null;
@@ -38,6 +64,12 @@ public class DBConnection {
 		return resultado;
 	}
 	
+	
+	/**
+	 * Set del Query
+	 * 
+	 * @param _query
+	 */
 	public void setQuery(String _query) {
 		Statement state = null;
 		try {
