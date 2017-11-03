@@ -1,6 +1,8 @@
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 
+import com.mongodb.MongoClient;
+
 /**
  * @author javia
  *
@@ -15,5 +17,5 @@ public class Evaluate {
 
 	// create the Datastore connecting to the default port on the local host
 	final Datastore datastore = morphia.createDatastore(new MongoClient(), "morphia_example");
-	datastore.ensureIndexes();
+	datastore.ensureIndexes(com.mongodb.DBObject);
 }
