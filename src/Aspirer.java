@@ -11,6 +11,7 @@
 
 import org.bson.types.ObjectId;
 
+
 public class Aspirer {
 
 	/* Atributos */
@@ -23,6 +24,11 @@ public class Aspirer {
 	protected double NotaHistoria;
 	protected double Escalafon;
 
+	/**
+	 * Constructor vacío para la clase
+	 */
+	public Aspirer() {}
+	
 	/**
 	 * CONSTRUCTOR
 	 * 
