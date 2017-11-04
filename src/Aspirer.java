@@ -9,14 +9,20 @@
  *
  */
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 
 import org.bson.types.ObjectId;
 
 
 @Entity
-public class Aspirer {
+public class Aspirer implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8864168665622995215L;
 	/* Atributos */
 	protected ObjectId Id;
 	protected String Name;
