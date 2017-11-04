@@ -12,6 +12,7 @@
 import org.bson.types.ObjectId;
 
 
+@Entity
 public class Aspirer {
 
 	/* Atributos */
