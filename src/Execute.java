@@ -13,7 +13,7 @@ public class Execute {
 		DBConnection conexion = new DBConnection();
 		ResultSet resultado;
 		
-		resultado = conexion.getQuery("select * from aspirer");
+		resultado = conexion.getQuery("select * from test");
 
 	}
 
