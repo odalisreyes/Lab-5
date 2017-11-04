@@ -12,9 +12,9 @@
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-
-import org.bson.types.ObjectId;
-
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Aspirer implements Serializable {
@@ -22,9 +22,21 @@ public class Aspirer implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 8864168665622995215L;
+	private static final long serialVersionUID = 1L;
 	/* Atributos */
-	protected ObjectId Id;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	protected String Name;
 	protected String DPI;
 	protected double Average;
@@ -36,8 +48,9 @@ public class Aspirer implements Serializable {
 	/**
 	 * Constructor vacío para la clase
 	 */
-	public Aspirer() {}
-	
+	public Aspirer() {
+	}
+
 	/**
 	 * CONSTRUCTOR
 	 * 
