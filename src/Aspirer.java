@@ -9,6 +9,8 @@
  *
  */
 
+import javax.persistence.Entity;
+
 import org.bson.types.ObjectId;
 
 
