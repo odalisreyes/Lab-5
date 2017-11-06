@@ -135,14 +135,8 @@ public class GUI {
 	@FXML // fx:id="nomAspirante"
 	private TextField nomAspirante; // Value injected by FXMLLoader
 
-	@FXML
-	void bf0404(ActionEvent event) {
-
-	}
-
-	@FXML
-	void bf0404(ActionEvent event) {
-
-	}
+	
+	
+	
 
 }

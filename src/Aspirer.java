@@ -24,7 +24,7 @@ public class Aspirer implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 8864168665622995215L;
 	/* Atributos */
 
 	@Id
