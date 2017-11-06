@@ -20,9 +20,8 @@ public class Evaluate {
 	private EntityManagerFactory emf;
 	private EntityManager em;
 
-	
 	/**
-	 *  Constructor de la clase
+	 * Constructor de la clase
 	 */
 	public Evaluate() {
 		emf = javax.persistence.Persistence.createEntityManagerFactory("escalafon");
@@ -30,7 +29,6 @@ public class Evaluate {
 		Aspirers = new ArrayList<Aspirer>();
 	}
 
-	
 	/**
 	 * GET de los aspirantes
 	 * 
@@ -40,7 +38,6 @@ public class Evaluate {
 		return Aspirers;
 	}
 
-	
 	/**
 	 * 
 	 * @param aspirers
@@ -48,7 +45,6 @@ public class Evaluate {
 	public void setAspirers(ArrayList<Aspirer> aspirers) {
 		Aspirers = aspirers;
 	}
-
 
 	public void CloseDB() {
 		emf.close();
@@ -175,13 +171,167 @@ public class Evaluate {
 		return Aspirers.get(index);
 	}
 
+	/**
+	 * 
+	 * @param posicion
+	 *            posicion del aspirante
+	 * @param dato
+	 *            dato que se quiere cambiar
+	 * @param name
+	 *            nombre del aspirante
+	 * @param dPI
+	 *            numero de DPI del aspirante
+	 * @param Average
+	 *            promedio de secundaria del aspirante
+	 * @param Type
+	 *            si es de secundaria o de bachillerato
+	 * @param Desvinculado
+	 *            si es desvinculado o no
+	 * @param notaHistoria
+	 *            nota del examen de historia
+	 * @param notaMatematica
+	 *            nota del examen de matematica
+	 * @param notaEspanol
+	 *            nota del examen de español
+	 * @param notaAptitud
+	 *            nota del examen de aptitud
+	 */
 	public void ModifySecondary(int posicion, int dato, String name, String dPI, double Average, boolean Type,
 			boolean Desvinculado, double notaHistoria, double notaMatematica, double notaEspanol, double notaAptitud) {
 		switch (dato) {
 		case 1:
+			Secondary aspirer = em.find(Secondary.class, FindAspirer(posicion).getId());
+			em.getTransaction().begin();
+			aspirer.setName(name);
+			em.getTransaction().commit();
+			break;
+
+		case 2:
+			aspirer = em.find(Secondary.class, FindAspirer(posicion).getId());
+			em.getTransaction().begin();
+			aspirer.setDPI(dPI);
+			em.getTransaction().commit();
+			break;
+
+		case 3:
+			aspirer = em.find(Secondary.class, FindAspirer(posicion).getId());
+			em.getTransaction().begin();
+			aspirer.setAverage(Average);
+			em.getTransaction().commit();
+			break;
+
+		case 4:
+			aspirer = em.find(Secondary.class, FindAspirer(posicion).getId());
+			em.getTransaction().begin();
+			aspirer.setType(Type);
+			em.getTransaction().commit();
+			break;
+
+		case 5:
+			aspirer = em.find(Secondary.class, FindAspirer(posicion).getId());
+			em.getTransaction().begin();
+			aspirer.setDesvinculado(Desvinculado);
+			em.getTransaction().commit();
+			break;
+
+		case 6:
+			aspirer = em.find(Secondary.class, FindAspirer(posicion).getId());
+			em.getTransaction().begin();
+			aspirer.setNotaHistoria(notaHistoria);
+			em.getTransaction().commit();
+			break;
+
+		case 7:
+			aspirer = em.find(Secondary.class, FindAspirer(posicion).getId());
+			em.getTransaction().begin();
+			aspirer.setNotaMatematica(notaMatematica);
+			em.getTransaction().commit();
+			break;
+
+		case 8:
+			aspirer = em.find(Secondary.class, FindAspirer(posicion).getId());
+			em.getTransaction().begin();
+			aspirer.setNotaEspanol(notaEspanol);
+			em.getTransaction().commit();
+			break;
+
+		case 9:
+			aspirer = em.find(Secondary.class, FindAspirer(posicion).getId());
+			em.getTransaction().begin();
+			aspirer.setNotaAptitud(notaAptitud);
+			em.getTransaction().commit();
+			break;
 
 		}
 
+	}
+
+	
+	/**
+	 * 
+	 * @param posicion
+	 *            posicion del aspirante
+	 * @param dato
+	 *            dato a modificar
+	 * @param name
+	 *            nombre del aspirante
+	 * @param dPI
+	 *            numero de DPI del aspirante
+	 * @param average
+	 *            promedio del bachillerato del aspirante
+	 * @param type
+	 *            si es de secundaria o bachillerato
+	 * @param desvinculado
+	 *            si es devinculado o no
+	 * @param notaHistoria
+	 *            nota del examen de historia
+	 */
+	public void ModifyBachelor(int posicion, int dato, String name, String dPI, double average, boolean type,
+			boolean desvinculado, double notaHistoria) {
+		switch (dato) {
+		case 1:
+			Bachelor aspirer = em.find(Bachelor.class, FindAspirer(posicion).getId());
+			em.getTransaction().begin();
+			aspirer.setName(name);
+			em.getTransaction().commit();
+			break;
+
+		case 2:
+			aspirer = em.find(Bachelor.class, FindAspirer(posicion).getId());
+			em.getTransaction().begin();
+			aspirer.setDPI(dPI);
+			em.getTransaction().commit();
+			break;
+
+		case 3:
+			aspirer = em.find(Bachelor.class, FindAspirer(posicion).getId());
+			em.getTransaction().begin();
+			aspirer.setAverage(average);
+			em.getTransaction().commit();
+			break;
+
+		case 4:
+			aspirer = em.find(Bachelor.class, FindAspirer(posicion).getId());
+			em.getTransaction().begin();
+			aspirer.setType(type);
+			em.getTransaction().commit();
+			break;
+
+		case 5:
+			aspirer = em.find(Bachelor.class, FindAspirer(posicion).getId());
+			em.getTransaction().begin();
+			aspirer.setDesvinculado(desvinculado);
+			em.getTransaction().commit();
+			break;
+
+		case 6:
+			aspirer = em.find(Bachelor.class, FindAspirer(posicion).getId());
+			em.getTransaction().begin();
+			aspirer.setNotaHistoria(notaHistoria);
+			em.getTransaction().commit();
+			break;
+
+		}
 	}
 
 }
