@@ -1,5 +1,9 @@
 import java.text.DecimalFormat;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * PROPOSITO:
  * 
@@ -10,6 +14,11 @@ import java.text.DecimalFormat;
  *
  */
 public class Bachelor extends Aspirer implements Nota {
+
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
 	/**
 	 * Constructor de la clase. Hereda los atributos de la clase padre.

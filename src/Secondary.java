@@ -1,5 +1,10 @@
 import java.text.DecimalFormat;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * PROPÓSITO: Es la clase que actúa como el modelo de los alumnos graduados de
  * secundaria. Es heredada de Aspirer y utiliza la interfaz Nota para establecer
@@ -11,7 +16,13 @@ import java.text.DecimalFormat;
  * @since November 2nd, 2017.
  *
  */
+@Entity
 public class Secondary extends Aspirer implements Nota {
+
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
 	private double NotaMatematica;
 	private double NotaEspanol;
