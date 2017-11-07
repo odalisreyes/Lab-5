@@ -263,10 +263,10 @@ public class Evaluate {
 			break;
 
 		}
+		Organize();
 
 	}
 
-	
 	/**
 	 * 
 	 * @param posicion
@@ -330,8 +330,54 @@ public class Evaluate {
 			aspirer.setNotaHistoria(notaHistoria);
 			em.getTransaction().commit();
 			break;
-
 		}
+		Organize();
+	}
+
+	public void DeleteAspirer(int posicion) {
+		Aspirer aspirer = em.find(Aspirer.class, FindAspirer(posicion).getId());
+		em.getTransaction().begin();
+		em.remove(aspirer);
+		em.getTransaction().commit();
+		Organize();
+	}
+
+	public String BetterThan(double Grade) {
+		double number = 0;
+		double wabble = 0;
+		for (int i = 0; i < Aspirers.size(); i++) {
+			if (Aspirers.get(i).Type == false && Aspirers.get(i).Desvinculado == true) {
+				number++;
+				wabble = wabble + Aspirers.get(i).Average;
+			}
+		}
+		String answer = "";
+		if (wabble / number > Grade) {
+			answer = "Sí";
+		} else {
+			answer = "No";
+		}
+		return answer;
+	}
+
+	public String High80() {
+		String answer = "";
+		double number = 0;
+		double wabble = 0;
+		for (int i = 0; i < Aspirers.size(); i++) {
+			if (Aspirers.get(i).Type == true && Aspirers.get(i).Desvinculado == true) {
+				number++;
+				if (Aspirers.get(i).Average > 80) {
+					wabble++;
+				}
+			}
+		}
+		if (wabble / number > 0.5) {
+			answer = "Sí";
+		} else {
+			answer = "No";
+		}
+		return answer;
 	}
 
 }
