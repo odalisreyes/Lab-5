@@ -203,13 +203,23 @@ public class GUI extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if (e.getSource()==AddB) {
+			if (e.getSource() == AddB) {
 				String name;
 				String DPI;
 				boolean type;
 				boolean desvinculado;
 				double average;
-				
+				double historia;
+				double mate;
+				double espanol;
+				double aptitud;
+				try {
+					NameTF.getText();
+				}
+				finally {
+					
+				}
+
 			}
 		}
 
@@ -223,14 +233,14 @@ public class GUI extends JFrame {
 					NEspanolTF.setEnabled(true);
 					NAptitudTF.setEditable(true);
 					NAptitudTF.setEnabled(true);
-				} else if (TipoCB.getSelectedIndex()==0) {
+				} else if (TipoCB.getSelectedIndex() == 0) {
 					NMatematicaTF.setEditable(false);
 					NMatematicaTF.setEnabled(false);
 					NEspanolTF.setEditable(false);
 					NEspanolTF.setEnabled(false);
 					NAptitudTF.setEditable(false);
 					NAptitudTF.setEnabled(false);
-				} else if (TipoCB.getSelectedIndex()==2) {
+				} else if (TipoCB.getSelectedIndex() == 2) {
 					NMatematicaTF.setEditable(false);
 					NMatematicaTF.setEnabled(false);
 					NEspanolTF.setEditable(false);
