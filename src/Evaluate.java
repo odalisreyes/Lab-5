@@ -88,7 +88,7 @@ public class Evaluate {
 					Aspirer temp = Aspirers.get(i);
 					Aspirers.set(i, Aspirers.get(k));
 					Aspirers.set(k, temp);
-				}
+				} 
 			}
 		}
 	}
@@ -334,6 +334,11 @@ public class Evaluate {
 		Organize();
 	}
 
+	
+	/**
+	 * 
+	 * @param posicion
+	 */
 	public void DeleteAspirer(int posicion) {
 		Aspirer aspirer = em.find(Aspirer.class, FindAspirer(posicion).getId());
 		em.getTransaction().begin();
@@ -342,6 +347,12 @@ public class Evaluate {
 		Organize();
 	}
 
+	
+	/**
+	 * 
+	 * @param Grade
+	 * @return answer
+	 */
 	public String BetterThan(double Grade) {
 		double number = 0;
 		double wabble = 0;
@@ -360,6 +371,10 @@ public class Evaluate {
 		return answer;
 	}
 
+	/**
+	 * 
+	 * @return answer 
+	 */
 	public String High80() {
 		String answer = "";
 		double number = 0;

@@ -1,13 +1,18 @@
 
+import javafx.application.Application;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-public class GUI {
+public class GUI extends Application{
 
 	@FXML // fx:id="no"
 	private RadioButton no; // Value injected by FXMLLoader
@@ -37,7 +42,7 @@ public class GUI {
 	private Label labelPosicion; // Value injected by FXMLLoader
 
 	@FXML // fx:id="opcionTipo"
-	private ComboBox<?> opcionTipo; // Value injected by FXMLLoader
+	private ComboBox<String> opcionTipo; // Value injected by FXMLLoader
 
 	@FXML // fx:id="notaMate"
 	private TextField notaMate; // Value injected by FXMLLoader
@@ -136,7 +141,15 @@ public class GUI {
 	private TextField nomAspirante; // Value injected by FXMLLoader
 
 	
-	
+	public void start(Stage stage) throws Exception {
+		Parent root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+		
+		opcionTipo.getItems().setAll("Apple", "Orange", "Pear");
+		
+	}
 	
 
 }
