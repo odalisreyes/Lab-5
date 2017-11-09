@@ -24,7 +24,7 @@ public class Evaluate {
 	 * Constructor de la clase
 	 */
 	public Evaluate() {
-		emf = javax.persistence.Persistence.createEntityManagerFactory("escalafon");
+		emf = javax.persistence.Persistence.createEntityManagerFactory("jdbc:mysql://localhost:3306/escalafon?zeroDateTimeBehavior=convertToNull;user=root;password=NoGameNoLife1998");
 		em = emf.createEntityManager();
 		Aspirers = new ArrayList<Aspirer>();
 	}

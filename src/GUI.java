@@ -41,13 +41,14 @@ public class GUI extends JFrame {
 	private JRadioButton SiRB;
 	private JRadioButton NoRB;
 	private JTextField DPITF;
-	private JTextField ModifyPostitionTF;
+	private JTextField ModifyPositionTF;
 	private JTextField NewAspirerTF;
 	private JTextField PositionTF;
 	private JTextField Answer1TF;
 	private JButton MostrarB;
 	private JButton MostrarATF;
 	private JTextArea AspirantesTA;
+	private JButton ModifyB;
 
 	/**
 	 * Launch the application.
@@ -69,8 +70,9 @@ public class GUI extends JFrame {
 	 * Create the frame.
 	 */
 	public GUI() {
-		//Llamada al constructor de la clase controladora
+		// Llamada al constructor de la clase controladora
 		hallelujah = new Evaluate();
+		hallelujah.Organize();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 928, 705);
 		contentPane = new JPanel();
@@ -78,134 +80,133 @@ public class GUI extends JFrame {
 		setContentPane(contentPane);
 
 		JPanel panel = new JPanel();
-		
+
 		JPanel panel_1 = new JPanel();
-		
+
 		JPanel panel_2 = new JPanel();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(
+				Alignment.TRAILING,
+				gl_contentPane.createSequentialGroup().addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addComponent(panel_2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 912, Short.MAX_VALUE)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 474, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)))
-					.addContainerGap())
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(panel, GroupLayout.PREFERRED_SIZE, 474, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)))
+						.addContainerGap()));
+		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(panel_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-					.addContainerGap())
-		);
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(panel_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE))
+						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE).addContainerGap()));
 		panel_2.setLayout(null);
-		
+
 		JLabel lblMostrarAspirante = new JLabel("Mostrar aspirante");
 		lblMostrarAspirante.setBounds(202, 6, 127, 16);
 		panel_2.add(lblMostrarAspirante);
-		
+
 		JLabel lblPosicinEnEl_1 = new JLabel("Posición en el escalafón:");
 		lblPosicinEnEl_1.setBounds(37, 43, 155, 16);
 		panel_2.add(lblPosicinEnEl_1);
-		
+
 		PositionTF = new JTextField();
 		PositionTF.setBounds(199, 34, 78, 26);
 		panel_2.add(PositionTF);
 		PositionTF.setColumns(10);
-		
+
 		JButton ShowB = new JButton("Mostrar");
 		ShowB.setBounds(289, 34, 117, 29);
 		panel_2.add(ShowB);
-		
+
 		JTextArea ShowAspirerTA = new JTextArea();
 		ShowAspirerTA.setBounds(19, 71, 451, 99);
 		panel_2.add(ShowAspirerTA);
-		
+
 		JButton AgainB = new JButton("Reiniciar programa");
 		AgainB.setBounds(643, 100, 155, 29);
 		panel_2.add(AgainB);
-		
-		JLabel lblelDe = new JLabel("¿El 50% de los alumnos desvinculados graduados de bachillerato tienen un promedio mayor a 80 pts?");
+
+		JLabel lblelDe = new JLabel(
+				"¿El 50% de los alumnos desvinculados graduados de bachillerato tienen un promedio mayor a 80 pts?");
 		lblelDe.setBounds(19, 187, 651, 16);
 		panel_2.add(lblelDe);
-		
+
 		JButton Calculate1B = new JButton("Calcular");
 		Calculate1B.setBounds(669, 182, 95, 29);
 		panel_2.add(Calculate1B);
-		
+
 		JLabel Answer1 = new JLabel("Respuesta");
 		Answer1.setForeground(new Color(178, 34, 34));
 		Answer1.setBounds(776, 187, 89, 16);
 		panel_2.add(Answer1);
-		
-		JLabel lblelPromedioDe = new JLabel("¿El promedio de los aspirantes desvinculados graduados de secundario es mayor a ");
+
+		JLabel lblelPromedioDe = new JLabel(
+				"¿El promedio de los aspirantes desvinculados graduados de secundario es mayor a ");
 		lblelPromedioDe.setBounds(19, 217, 523, 16);
 		panel_2.add(lblelPromedioDe);
-		
+
 		Answer1TF = new JTextField();
 		Answer1TF.setBounds(548, 212, 65, 26);
 		panel_2.add(Answer1TF);
 		Answer1TF.setColumns(10);
-		
+
 		JLabel label = new JLabel("?");
 		label.setBounds(617, 217, 14, 16);
 		panel_2.add(label);
-		
+
 		JButton Calculate2B = new JButton("Calcular");
 		Calculate2B.setBounds(634, 212, 95, 29);
 		panel_2.add(Calculate2B);
-		
+
 		JLabel Answer2TF = new JLabel("Respuesta");
 		Answer2TF.setForeground(new Color(178, 34, 34));
 		Answer2TF.setBounds(741, 217, 78, 16);
 		panel_2.add(Answer2TF);
 		panel_1.setLayout(null);
-		
+
 		JButton MostrarATF = new JButton("Mostrar aspirantes");
 		MostrarATF.setBounds(141, 6, 161, 29);
 		panel_1.add(MostrarATF);
-		
+
 		JTextArea AspirantesTA = new JTextArea();
 		AspirantesTA.setBounds(22, 47, 384, 130);
 		panel_1.add(AspirantesTA);
-		
+
 		JLabel lblModificarLosDatos = new JLabel("Modificar los datos de un aspirante");
 		lblModificarLosDatos.setBounds(113, 203, 236, 16);
 		panel_1.add(lblModificarLosDatos);
-		
+
 		JLabel lblPosicinEnEl = new JLabel("Posición en el escalafon:");
 		lblPosicinEnEl.setBounds(6, 231, 161, 16);
 		panel_1.add(lblPosicinEnEl);
-		
-		ModifyPostitionTF = new JTextField();
-		ModifyPostitionTF.setBounds(167, 226, 91, 26);
-		panel_1.add(ModifyPostitionTF);
-		ModifyPostitionTF.setColumns(10);
-		
+
+		ModifyPositionTF = new JTextField();
+		ModifyPositionTF.setBounds(167, 226, 91, 26);
+		panel_1.add(ModifyPositionTF);
+		ModifyPositionTF.setColumns(10);
+
 		JLabel lblNuevoDato = new JLabel("Nuevo dato:");
 		lblNuevoDato.setBounds(280, 231, 106, 16);
 		panel_1.add(lblNuevoDato);
-		
+
 		JLabel lblDatoAModiciar = new JLabel("Dato a modificar:");
 		lblDatoAModiciar.setBounds(16, 263, 112, 16);
 		panel_1.add(lblDatoAModiciar);
-		
-		JComboBox ModifyCB = new JComboBox();
-		ModifyCB.setModel(new DefaultComboBoxModel(new String[] {"-dato-", "Nombre", "DPI", "Promedio", "Tipo", "Desvinculado", "Nota de historia", "Nota de matemática", "Nota de español", "Nota de aptitud"}));
+
+		JComboBox<String> ModifyCB = new JComboBox<String>();
+		ModifyCB.setModel(new DefaultComboBoxModel<String>(new String[] { "-dato-", "Nombre", "DPI", "Promedio", "Tipo",
+				"Desvinculado", "Nota de historia", "Nota de matemática", "Nota de español", "Nota de aptitud" }));
 		ModifyCB.setBounds(125, 259, 138, 27);
 		panel_1.add(ModifyCB);
-		
+
 		NewAspirerTF = new JTextField();
 		NewAspirerTF.setBounds(280, 258, 126, 26);
 		panel_1.add(NewAspirerTF);
 		NewAspirerTF.setColumns(10);
-		
+
 		JButton ModifyB = new JButton("Modificar");
 		ModifyB.setBounds(185, 298, 117, 29);
 		panel_1.add(ModifyB);
@@ -268,107 +269,94 @@ public class GUI extends JFrame {
 		DPITF.setColumns(10);
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(ANameL)
-							.addGap(18)
-							.addComponent(NameTF, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE))
-						.addComponent(lblNotasEnLos)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblPromedioEnSus)
+				gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup().addContainerGap().addGroup(gl_panel
+								.createParallelGroup(Alignment.LEADING).addGroup(gl_panel
+										.createSequentialGroup().addComponent(ANameL).addGap(18).addComponent(NameTF,
+												GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE))
+								.addComponent(lblNotasEnLos)
+								.addGroup(gl_panel.createSequentialGroup().addGroup(gl_panel
+										.createParallelGroup(Alignment.LEADING).addComponent(lblPromedioEnSus)
+										.addGroup(gl_panel.createSequentialGroup().addGap(10).addGroup(gl_panel
+												.createParallelGroup(Alignment.LEADING, false).addGroup(gl_panel
+														.createSequentialGroup().addComponent(lblHistoria)
+														.addPreferredGap(ComponentPlacement.RELATED,
+																GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+														.addComponent(
+																NHistoriaTF, GroupLayout.PREFERRED_SIZE,
+																GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+												.addGroup(gl_panel.createSequentialGroup()
+														.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+																.addComponent(lblMatemtica).addComponent(lblEspaol)
+																.addComponent(lblAptitud))
+														.addPreferredGap(ComponentPlacement.RELATED)
+														.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+																.addComponent(NAptitudTF, GroupLayout.PREFERRED_SIZE,
+																		GroupLayout.DEFAULT_SIZE,
+																		GroupLayout.PREFERRED_SIZE)
+																.addComponent(NEspanolTF, GroupLayout.PREFERRED_SIZE,
+																		GroupLayout.DEFAULT_SIZE,
+																		GroupLayout.PREFERRED_SIZE)
+																.addComponent(NMatematicaTF, GroupLayout.PREFERRED_SIZE,
+																		GroupLayout.DEFAULT_SIZE,
+																		GroupLayout.PREFERRED_SIZE))))))
+										.addPreferredGap(ComponentPlacement.UNRELATED)
+										.addGroup(gl_panel.createParallelGroup(Alignment.LEADING).addComponent(AddB)
+												.addComponent(AverageTF, GroupLayout.PREFERRED_SIZE,
+														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 								.addGroup(gl_panel.createSequentialGroup()
-									.addGap(10)
-									.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
-										.addGroup(gl_panel.createSequentialGroup()
-											.addComponent(lblHistoria)
-											.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-											.addComponent(NHistoriaTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-										.addGroup(gl_panel.createSequentialGroup()
-											.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-												.addComponent(lblMatemtica)
-												.addComponent(lblEspaol)
-												.addComponent(lblAptitud))
-											.addPreferredGap(ComponentPlacement.RELATED)
-											.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-												.addComponent(NAptitudTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addComponent(NEspanolTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addComponent(NMatematicaTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))))
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addComponent(AddB)
-								.addComponent(AverageTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
-								.addGroup(gl_panel.createSequentialGroup()
-									.addComponent(lblDpi)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(DPITF, 0, 0, Short.MAX_VALUE))
-								.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
-									.addComponent(lblDesvinculado)
-									.addGap(34)
-									.addComponent(SiRB)))
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel.createSequentialGroup()
-									.addGap(28)
-									.addComponent(NoRB))
-								.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-									.addGap(36)
-									.addComponent(TipoL)
-									.addGap(18)
-									.addComponent(TipoCB, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))))
-					.addGap(29))
-		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(ANameL)
-						.addComponent(NameTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(TipoCB, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(TipoL)
-						.addComponent(lblDpi)
-						.addComponent(DPITF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblDesvinculado)
-						.addComponent(SiRB)
-						.addComponent(NoRB))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblPromedioEnSus)
-						.addComponent(AverageTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(lblNotasEnLos)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblHistoria)
-						.addComponent(NHistoriaTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblMatemtica)
-						.addComponent(NMatematicaTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
+												.addGroup(gl_panel.createSequentialGroup().addComponent(lblDpi)
+														.addPreferredGap(ComponentPlacement.UNRELATED)
+														.addComponent(DPITF, 0, 0, Short.MAX_VALUE))
+												.addGroup(Alignment.LEADING,
+														gl_panel.createSequentialGroup().addComponent(lblDesvinculado)
+																.addGap(34).addComponent(SiRB)))
+										.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+												.addGroup(
+														gl_panel.createSequentialGroup().addGap(28).addComponent(NoRB))
+												.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+														.addGap(36).addComponent(TipoL).addGap(18).addComponent(TipoCB,
+																GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+																GroupLayout.PREFERRED_SIZE)))))
+								.addGap(29)));
+		gl_panel.setVerticalGroup(gl_panel.createParallelGroup(Alignment.LEADING).addGroup(gl_panel
+				.createSequentialGroup().addContainerGap()
+				.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE).addComponent(ANameL).addComponent(NameTF,
+						GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				.addPreferredGap(ComponentPlacement.UNRELATED)
+				.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(TipoCB, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)
+						.addComponent(TipoL).addComponent(lblDpi).addComponent(DPITF, GroupLayout.PREFERRED_SIZE,
+								GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				.addPreferredGap(ComponentPlacement.UNRELATED)
+				.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE).addComponent(lblDesvinculado)
+						.addComponent(SiRB).addComponent(NoRB))
+				.addPreferredGap(ComponentPlacement.UNRELATED)
+				.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE).addComponent(lblPromedioEnSus).addComponent(
+						AverageTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(lblNotasEnLos)
+				.addPreferredGap(ComponentPlacement.RELATED)
+				.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE).addComponent(lblHistoria).addComponent(
+						NHistoriaTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				.addPreferredGap(ComponentPlacement.UNRELATED)
+				.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE).addComponent(lblMatemtica)
+						.addComponent(NMatematicaTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)
 						.addComponent(AddB))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblEspaol)
-						.addComponent(NEspanolTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblAptitud)
-						.addComponent(NAptitudTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(15, Short.MAX_VALUE))
-		);
+				.addPreferredGap(ComponentPlacement.UNRELATED)
+				.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE).addComponent(lblEspaol).addComponent(
+						NEspanolTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				.addPreferredGap(ComponentPlacement.UNRELATED)
+				.addGroup(gl_panel.createParallelGroup(Alignment.LEADING).addComponent(lblAptitud).addComponent(
+						NAptitudTF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				.addContainerGap(15, Short.MAX_VALUE)));
 		panel.setLayout(gl_panel);
 		contentPane.setLayout(gl_contentPane);
 	}
 
+	@SuppressWarnings("unused")
 	private class Gatsby implements ActionListener, ItemListener {
 
 		@Override
@@ -520,13 +508,27 @@ public class GUI extends JFrame {
 					aptitud = Double.parseDouble(decimal.format(num));
 				}
 
-				//Agrega a la base de datos
+				// Agrega a la base de datos
 				if (type == false) {
-					hallelujah.addSecondary(name, DPI, average, type, desvinculado, historia, mate, espanol,
-							aptitud);
-				} else if (type==true) {
+					hallelujah.addSecondary(name, DPI, average, type, desvinculado, historia, mate, espanol, aptitud);
+				} else if (type == true) {
 					hallelujah.addBachelor(name, DPI, average, type, desvinculado, historia);
 				}
+			}
+
+			// Mostrar aspirantes
+			else if (e.getSource() == MostrarB) {
+				AspirantesTA.setText(hallelujah.DisplayAspirers());
+			}
+
+			// Modificar un dato
+			else if (e.getSource() == ModifyB) {
+				try {
+					hallelujah.getAspirers().get(Integer.parseInt(ModifyPositionTF.getText()));
+				} catch (IndexOutOfBoundsException e1) {
+					JOptionPane.showMessageDialog(null, "No ha ingresado una posición válida", "Posición no válida", JOptionPane.WARNING_MESSAGE);
+				}
+				
 			}
 		}
 
