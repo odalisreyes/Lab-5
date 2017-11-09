@@ -45,6 +45,9 @@ public class GUI extends JFrame {
 	private JTextField NewAspirerTF;
 	private JTextField PositionTF;
 	private JTextField Answer1TF;
+	private JButton MostrarB;
+	private JButton MostrarATF;
+	private JTextArea AspirantesTA;
 
 	/**
 	 * Launch the application.
@@ -69,7 +72,7 @@ public class GUI extends JFrame {
 		//Llamada al constructor de la clase controladora
 		hallelujah = new Evaluate();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 928, 644);
+		setBounds(100, 100, 928, 705);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
