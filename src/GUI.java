@@ -6,6 +6,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.text.DecimalFormat;
 import java.util.InputMismatchException;
 
 import javax.swing.JFrame;
@@ -24,6 +25,7 @@ import javax.swing.JButton;
 
 public class GUI extends JFrame {
 
+	private Evaluate hallelujah;
 	private JPanel contentPane;
 	private JTextField NameTF;
 	private JTextField AverageTF;
@@ -57,6 +59,8 @@ public class GUI extends JFrame {
 	 * Create the frame.
 	 */
 	public GUI() {
+		//Llamada al constructor de la clase controladora
+		hallelujah = new Evaluate();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 836, 644);
 		contentPane = new JPanel();
@@ -125,7 +129,7 @@ public class GUI extends JFrame {
 		NAptitudTF.setColumns(10);
 
 		AddB = new JButton("Agregar aspirante");
-		
+
 		JLabel lblDpi = new JLabel("DPI:");
 
 		DPITF = new JTextField();
@@ -221,21 +225,26 @@ public class GUI extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == AddB) {
-				String name;
-				String DPI;
-				boolean type;
-				boolean desvinculado;
-				double average;
-				double historia;
-				double mate;
-				double espanol;
-				double aptitud;
+				String name = "";
+				String DPI = "";
+				boolean type = false;
+				boolean desvinculado = false;
+				double average = 0;
+				double historia = 0;
+				double mate = 0;
+				double espanol = 0;
+				double aptitud = 0;
+				DecimalFormat decimal = new DecimalFormat(".##");
+
+				// Nombre
 				if (NameTF.getText() == "") {
 					JOptionPane.showMessageDialog(null, "No ha ingresado un nombre", "Falta nombre",
 							JOptionPane.WARNING_MESSAGE);
 					return;
 				}
 				name = NameTF.getText();
+
+				// DPI
 				String tutu = DPITF.getText().trim();
 				if (tutu.length() != 13) {
 					JOptionPane.showMessageDialog(null, "El número de DPI no tiene 13 caracteres", "DPI no válido",
@@ -245,27 +254,129 @@ public class GUI extends JFrame {
 				try {
 					@SuppressWarnings("unused")
 					long wabble = Long.parseLong(DPITF.getText().trim());
-				}
-				catch (InputMismatchException e1) {
-					JOptionPane.showMessageDialog(null, "El DPI no puede tener letras", "DPI no válido", JOptionPane.WARNING_MESSAGE);
-				}
-				finally {
-					DPI=DPITF.getText().trim();
-				}
-				if (TipoCB.getSelectedIndex()==0) {
-					JOptionPane.showMessageDialog(null, "No ha seleccionado un tipo", "Tipo no seleccionado", JOptionPane.WARNING_MESSAGE);
-				} else if (TipoCB.getSelectedIndex()==1) {
-					type=false;
-				} else if (TipoCB.getSelectedIndex()==2) {
-					type=true;
+				} catch (InputMismatchException e1) {
+					JOptionPane.showMessageDialog(null, "El DPI no puede tener letras", "DPI no válido",
+							JOptionPane.WARNING_MESSAGE);
+				} finally {
+					DPI = DPITF.getText().trim();
 				}
 
-				if (SiRB.isSelected()==false && NoRB.isSelected()==false) {
-					JOptionPane.showMessageDialog(null, "No ha definido si es desvinculado o no", "Desvinculado", JOptionPane.WARNING_MESSAGE);
-				} else if (SiRB.isSelected()==true) {
-					desvinculado=true;
-				} else if (NoRB.isSelected()==true) {
-					desvinculado=false;
+				// Tipo
+				if (TipoCB.getSelectedIndex() == 0) {
+					JOptionPane.showMessageDialog(null, "No ha seleccionado un tipo", "Tipo no seleccionado",
+							JOptionPane.WARNING_MESSAGE);
+				} else if (TipoCB.getSelectedIndex() == 1) {
+					type = false;
+				} else if (TipoCB.getSelectedIndex() == 2) {
+					type = true;
+				}
+
+				// Desvinculado
+				if (SiRB.isSelected() == false && NoRB.isSelected() == false) {
+					JOptionPane.showMessageDialog(null, "No ha definido si es desvinculado o no", "Desvinculado",
+							JOptionPane.WARNING_MESSAGE);
+				} else if (SiRB.isSelected() == true) {
+					desvinculado = true;
+				} else if (NoRB.isSelected() == true) {
+					desvinculado = false;
+				}
+
+				// Promedio
+				try {
+					@SuppressWarnings("unused")
+					double wabble = Double.parseDouble(DPITF.getText());
+				} catch (InputMismatchException e1) {
+					if (AverageTF.getText() == "") {
+						JOptionPane.showMessageDialog(null, "No ha ingresado un promedio", "No hay promedio",
+								JOptionPane.WARNING_MESSAGE);
+					} else {
+						JOptionPane.showMessageDialog(null, "No ha ingresado un promedio válido", "Promedio no válido",
+								JOptionPane.WARNING_MESSAGE);
+					}
+					return;
+				} finally {
+					double num = Double.parseDouble(AverageTF.getText());
+					average = Double.parseDouble(decimal.format(num));
+				}
+
+				// Historia
+				try {
+					@SuppressWarnings("unused")
+					double wabble = Double.parseDouble(NHistoriaTF.getText());
+				} catch (InputMismatchException e1) {
+					if (NHistoriaTF.getText() == "") {
+						JOptionPane.showMessageDialog(null, "No ha ingresado una nota de historia", "No hay nota",
+								JOptionPane.WARNING_MESSAGE);
+					} else {
+						JOptionPane.showMessageDialog(null, "No ha ingresado una nota de historia válida",
+								"Nota no válida", JOptionPane.WARNING_MESSAGE);
+					}
+					return;
+				} finally {
+					double num = Double.parseDouble(NHistoriaTF.getText());
+					historia = Double.parseDouble(decimal.format(num));
+				}
+
+				// Matematica
+				try {
+					@SuppressWarnings("unused")
+					double wabble = Double.parseDouble(NMatematicaTF.getText());
+				} catch (InputMismatchException e1) {
+					if (NMatematicaTF.getText() == "") {
+						JOptionPane.showMessageDialog(null, "No ha ingresado una nota de matemática", "No hay nota",
+								JOptionPane.WARNING_MESSAGE);
+					} else {
+						JOptionPane.showMessageDialog(null, "No ha ingresado una nota de matemática válida",
+								"Nota no válida", JOptionPane.WARNING_MESSAGE);
+					}
+					return;
+				} finally {
+					double num = Double.parseDouble(NMatematicaTF.getText());
+					mate = Double.parseDouble(decimal.format(num));
+				}
+
+				// Español
+				try {
+					@SuppressWarnings("unused")
+					double wabble = Double.parseDouble(NEspanolTF.getText());
+				} catch (InputMismatchException e1) {
+					if (NEspanolTF.getText() == "") {
+						JOptionPane.showMessageDialog(null, "No ha ingresado una nota de español", "No hay nota",
+								JOptionPane.WARNING_MESSAGE);
+					} else {
+						JOptionPane.showMessageDialog(null, "No ha ingresado una nota de español válida",
+								"Nota no válida", JOptionPane.WARNING_MESSAGE);
+					}
+					return;
+				} finally {
+					double num = Double.parseDouble(NEspanolTF.getText());
+					espanol = Double.parseDouble(decimal.format(num));
+				}
+
+				// Aptitud
+				try {
+					@SuppressWarnings("unused")
+					double wabble = Double.parseDouble(NAptitudTF.getText());
+				} catch (InputMismatchException e1) {
+					if (NAptitudTF.getText() == "") {
+						JOptionPane.showMessageDialog(null, "No ha ingresado una nota para la prueba de aptitud",
+								"No hay nota", JOptionPane.WARNING_MESSAGE);
+					} else {
+						JOptionPane.showMessageDialog(null, "No ha ingresado una nota para la prueba de aptitud válida",
+								"Nota no válida", JOptionPane.WARNING_MESSAGE);
+					}
+					return;
+				} finally {
+					double num = Double.parseDouble(NAptitudTF.getText());
+					aptitud = Double.parseDouble(decimal.format(num));
+				}
+
+				//Agrega a la base de datos
+				if (type == false) {
+					hallelujah.addSecondary(name, DPI, average, type, desvinculado, historia, mate, espanol,
+							aptitud);
+				} else if (type==true) {
+					hallelujah.addBachelor(name, DPI, average, type, desvinculado, historia);
 				}
 			}
 		}
@@ -295,10 +406,10 @@ public class GUI extends JFrame {
 					NAptitudTF.setEditable(false);
 					NAptitudTF.setEnabled(false);
 				}
-			} else if (e.getSource()==SiRB) {
+			} else if (e.getSource() == SiRB) {
 				NoRB.setEnabled(false);
 				NoRB.setSelected(false);
-			} else if (e.getSource()==NoRB) {
+			} else if (e.getSource() == NoRB) {
 				SiRB.setEnabled(false);
 				SiRB.setEnabled(false);
 			}
