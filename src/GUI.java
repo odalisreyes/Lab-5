@@ -222,6 +222,10 @@ public class GUI extends JFrame {
 		TypeDesCB.setModel(new DefaultComboBoxModel<String>(new String[] { "-seleccione un dato-" }));
 		TypeDesCB.setBounds(22, 301, 145, 20);
 		panel_1.add(TypeDesCB);
+		
+		JScrollBar scrollBar = new JScrollBar();
+		scrollBar.setBounds(389, 47, 17, 130);
+		panel_1.add(scrollBar);
 
 		JLabel ANameL = new JLabel("Nombre del aspirante:");
 

@@ -4,7 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import javax.*;
 
 /**
  * PROPÓSITO: Es la clase que actúa como controlador del modelo. Hace la
