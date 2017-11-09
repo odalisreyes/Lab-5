@@ -49,6 +49,13 @@ public class GUI extends JFrame {
 	private JButton MostrarATF;
 	private JTextArea AspirantesTA;
 	private JButton ModifyB;
+	private JComboBox ModifyCB;
+	private JComboBox<String> TypeDesCB;
+	private JTextArea ShowAspirerTA;
+	private JButton Calculate1B;
+	private JButton Calculate2B;
+	private JLabel Answer1;
+	private JLabel Answer2TF;
 
 	/**
 	 * Launch the application.
@@ -121,7 +128,7 @@ public class GUI extends JFrame {
 		ShowB.setBounds(289, 34, 117, 29);
 		panel_2.add(ShowB);
 
-		JTextArea ShowAspirerTA = new JTextArea();
+		ShowAspirerTA = new JTextArea();
 		ShowAspirerTA.setBounds(19, 71, 451, 99);
 		panel_2.add(ShowAspirerTA);
 
@@ -208,8 +215,13 @@ public class GUI extends JFrame {
 		NewAspirerTF.setColumns(10);
 
 		JButton ModifyB = new JButton("Modificar");
-		ModifyB.setBounds(185, 298, 117, 29);
+		ModifyB.setBounds(269, 297, 117, 29);
 		panel_1.add(ModifyB);
+
+		TypeDesCB = new JComboBox<String>();
+		TypeDesCB.setModel(new DefaultComboBoxModel<String>(new String[] { "-seleccione un dato-" }));
+		TypeDesCB.setBounds(22, 301, 145, 20);
+		panel_1.add(TypeDesCB);
 
 		JLabel ANameL = new JLabel("Nombre del aspirante:");
 
@@ -524,11 +536,152 @@ public class GUI extends JFrame {
 			// Modificar un dato
 			else if (e.getSource() == ModifyB) {
 				try {
-					hallelujah.getAspirers().get(Integer.parseInt(ModifyPositionTF.getText()));
+					hallelujah.FindAspirer(Integer.parseInt(ModifyPositionTF.getText()));
 				} catch (IndexOutOfBoundsException e1) {
-					JOptionPane.showMessageDialog(null, "No ha ingresado una posición válida", "Posición no válida", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "No ha ingresado una posición válida", "Posición no válida",
+							JOptionPane.WARNING_MESSAGE);
+					return;
+				} finally {
+					if (hallelujah.FindAspirer(Integer.parseInt(ModifyPositionTF.getText())).Type == false) {
+						switch (ModifyCB.getSelectedIndex()) {
+						case 1:
+							hallelujah.ModifySecondary(Integer.parseInt(ModifyPositionTF.getText()),
+									ModifyCB.getSelectedIndex(), NewAspirerTF.getText(), "", 0, false, false, 0, 0, 0,
+									0);
+							break;
+						case 2:
+							hallelujah.ModifySecondary(Integer.parseInt(ModifyPositionTF.getText()),
+									ModifyCB.getSelectedIndex(), "", NewAspirerTF.getText(), 0, false, false, 0, 0, 0,
+									0);
+							break;
+						case 3:
+							hallelujah.ModifySecondary(Integer.parseInt(ModifyPositionTF.getText()),
+									ModifyCB.getSelectedIndex(), "", "", Double.parseDouble(NewAspirerTF.getText()),
+									false, false, 0, 0, 0, 0);
+							break;
+						case 4:
+							hallelujah.ModifySecondary(Integer.parseInt(ModifyPositionTF.getText()),
+									ModifyCB.getSelectedIndex(), "", "", Double.parseDouble(NewAspirerTF.getText()),
+									false, false, 0, 0, 0, 0);
+							break;
+						case 5:
+							if (TypeDesCB.getSelectedIndex() == 1) {
+								hallelujah.ModifySecondary(Integer.parseInt(ModifyPositionTF.getText()),
+										ModifyCB.getSelectedIndex(), "", "", 0, false, false, 0, 0, 0, 0);
+							} else if (TypeDesCB.getSelectedIndex() == 2) {
+								hallelujah.ModifySecondary(Integer.parseInt(ModifyPositionTF.getText()),
+										ModifyCB.getSelectedIndex(), "", "", 0, true, false, 0, 0, 0, 0);
+							}
+							break;
+						case 6:
+							if (TypeDesCB.getSelectedIndex() == 1) {
+								hallelujah.ModifySecondary(Integer.parseInt(ModifyPositionTF.getText()),
+										ModifyCB.getSelectedIndex(), "", "", 0, false, true, 0, 0, 0, 0);
+							} else if (TypeDesCB.getSelectedIndex() == 2) {
+								hallelujah.ModifySecondary(Integer.parseInt(ModifyPositionTF.getText()),
+										ModifyCB.getSelectedIndex(), "", "", 0, true, false, 0, 0, 0, 0);
+							}
+							break;
+						case 7:
+							hallelujah.ModifySecondary(Integer.parseInt(ModifyPositionTF.getText()),
+									ModifyCB.getSelectedIndex(), "", "", 0, false, false,
+									Double.parseDouble(NewAspirerTF.getText()), 0, 0, 0);
+							break;
+						case 8:
+							hallelujah.ModifySecondary(Integer.parseInt(ModifyPositionTF.getText()),
+									ModifyCB.getSelectedIndex(), "", "", 0, false, false, 0,
+									Double.parseDouble(NewAspirerTF.getText()), 0, 0);
+							break;
+						case 9:
+							hallelujah.ModifySecondary(Integer.parseInt(ModifyPositionTF.getText()),
+									ModifyCB.getSelectedIndex(), "", "", 0, false, false, 0, 0,
+									Double.parseDouble(NewAspirerTF.getText()), 0);
+							break;
+						case 10:
+							hallelujah.ModifySecondary(Integer.parseInt(ModifyPositionTF.getText()),
+									ModifyCB.getSelectedIndex(), "", "", 0, false, false, 0, 0, 0,
+									Double.parseDouble(NewAspirerTF.getText()));
+							break;
+						}
+					} else {
+						switch (ModifyCB.getSelectedIndex()) {
+						case 1:
+							hallelujah.ModifyBachelor(Integer.parseInt(ModifyPositionTF.getText()),
+									ModifyCB.getSelectedIndex(), NewAspirerTF.getText(), "", 0, false, false,
+									0);
+							break;
+						case 2:
+							hallelujah.ModifyBachelor(Integer.parseInt(ModifyPositionTF.getText()),
+									ModifyCB.getSelectedIndex(), "", NewAspirerTF.getText(), 0, false, false,
+									0);
+							break;
+						case 3:
+							hallelujah.ModifyBachelor(Integer.parseInt(ModifyPositionTF.getText()),
+									ModifyCB.getSelectedIndex(), "", "", Double.parseDouble(NewAspirerTF.getText()),
+									false, false, 0);
+							break;
+						case 4:
+							hallelujah.ModifyBachelor(Integer.parseInt(ModifyPositionTF.getText()),
+									ModifyCB.getSelectedIndex(), "", "", Double.parseDouble(NewAspirerTF.getText()),
+									false, false, 0);
+							break;
+						case 5:
+							if (TypeDesCB.getSelectedIndex() == 1) {
+								hallelujah.ModifyBachelor(Integer.parseInt(ModifyPositionTF.getText()),
+										ModifyCB.getSelectedIndex(), "", "", 0, false, false, 0);
+							} else if (TypeDesCB.getSelectedIndex() == 2) {
+								hallelujah.ModifyBachelor(Integer.parseInt(ModifyPositionTF.getText()),
+										ModifyCB.getSelectedIndex(), "", "", 0, true, false, 0);
+							}
+							break;
+						case 6:
+							if (TypeDesCB.getSelectedIndex() == 1) {
+								hallelujah.ModifyBachelor(Integer.parseInt(ModifyPositionTF.getText()),
+										ModifyCB.getSelectedIndex(), "", "", 0, false, true, 0);
+							} else if (TypeDesCB.getSelectedIndex() == 2) {
+								hallelujah.ModifyBachelor(Integer.parseInt(ModifyPositionTF.getText()),
+										ModifyCB.getSelectedIndex(), "", "", 0, true, false, 0);
+							}
+							break;
+						case 7:
+							hallelujah.ModifyBachelor(Integer.parseInt(ModifyPositionTF.getText()),
+									ModifyCB.getSelectedIndex(), "", "", 0, false, false,
+									Double.parseDouble(NewAspirerTF.getText()));
+							break;
+						}
+					}
 				}
-				
+			}
+			
+			//Mostrar un aspirante 
+			else if (e.getSource()==MostrarATF) {
+				try {
+					hallelujah.FindAspirer(Integer.parseInt(ModifyPositionTF.getText()));
+				} catch (IndexOutOfBoundsException e1) {
+					JOptionPane.showMessageDialog(null, "No ha ingresado una posición válida", "Posición no válida",
+							JOptionPane.WARNING_MESSAGE);
+					return;
+				} finally {
+					ShowAspirerTA.setText(hallelujah.FindAspirer(Integer.parseInt(PositionTF.getText())).toString());
+				}
+			}
+			
+			//Calcular si el 50% de graduados desvinculados de bachillerato tiene un promedio mayor a 80
+			else if (e.getSource()==Calculate1B) {
+				Answer1.setText(hallelujah.High80());
+			}
+			
+			//Calcular si el promedio de los alumnos desvinculados graduados de secundaria es mayor a uno establecido por el usuario
+			else if (e.getSource()==Calculate2B) {
+				try {
+					Double.parseDouble(Answer1TF.getText());
+				} catch (IndexOutOfBoundsException e1) {
+					JOptionPane.showMessageDialog(null, "No ha ingresado un número válido", "Número no válido",
+							JOptionPane.WARNING_MESSAGE);
+					return;
+				} finally {
+					Answer2TF.setText(hallelujah.BetterThan(Double.parseDouble(Answer1TF.getText())));
+				}
 			}
 		}
 
@@ -563,6 +716,22 @@ public class GUI extends JFrame {
 			} else if (e.getSource() == NoRB) {
 				SiRB.setEnabled(false);
 				SiRB.setEnabled(false);
+			} else if (e.getSource() == ModifyCB) {
+				if (ModifyCB.getSelectedIndex() == 5) {
+					TypeDesCB.setModel(new DefaultComboBoxModel<String>(
+							new String[] { "-seleccione un tipo-", "Secundaria", "Bachillerato" }));
+				} else if (ModifyCB.getSelectedIndex() == 6) {
+					TypeDesCB.setModel(new DefaultComboBoxModel<String>(
+							new String[] { "-seleccione un tipo-", "Desvinculado", "No desvinculado" }));
+				}
+
+				if (ModifyCB.getSelectedIndex() == 5 || ModifyCB.getSelectedIndex() == 6) {
+					NewAspirerTF.setEnabled(false);
+					NewAspirerTF.setEditable(false);
+				} else {
+					NewAspirerTF.setEnabled(true);
+					NewAspirerTF.setEditable(true);
+				}
 			}
 		}
 
