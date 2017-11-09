@@ -162,5 +162,16 @@ public class Secondary extends Aspirer implements Nota {
 		}
 
 	}
+	
+	
+	/**
+	 * toString de la clase
+	 */
+	public String toString() {
+		String secundaria = "-Nombre del aspirante: " + Name + "\n" + "-Número de DPI: " + DPI + "\n" + "-Promedio de secundaria: " + Average + "\n"
+				+ "-Tipo: " + Type + "\n" + "-Desvinculado: " + Desvinculado + "\n" + "-Nota de historia: " + NotaHistoria + "\n" + "-Nota de matematica: "
+				+ NotaMatematica + "\n" + "-Nota de español: " + NotaEspanol + "\n" + "-Nota de aptitud: " + NotaAptitud;
+		return secundaria;
+	}
 
 }
