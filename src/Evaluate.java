@@ -29,6 +29,8 @@ public class Evaluate {
 		Aspirers = new ArrayList<Aspirer>();
 	}
 
+	
+	
 	/**
 	 * GET de los aspirantes
 	 * 
@@ -51,6 +53,9 @@ public class Evaluate {
 		em.close();
 	}
 
+	
+	
+	
 	/**
 	 * SET de los aspirantes
 	 * 
@@ -63,12 +68,13 @@ public class Evaluate {
 		for (Secondary secondary : s) {
 			Aspirers.add(secondary);
 		}
-
 		for (Bachelor bachelor : b) {
 			Aspirers.add(bachelor);
 		}
 	}
-
+	
+	
+	
 	@SuppressWarnings("unchecked")
 	/**
 	 * Método para organizar la lista de los aspirantes
@@ -88,12 +94,17 @@ public class Evaluate {
 					Aspirer temp = Aspirers.get(i);
 					Aspirers.set(i, Aspirers.get(k));
 					Aspirers.set(k, temp);
-				} 
+				}
 			}
 		}
 	}
 
+	
+	
+	
 	/**
+	 * 
+	 * Método para poder agregar un aspirante de secundaria al escalafon
 	 * 
 	 * @param name
 	 *            nombre del estudiante
@@ -124,7 +135,10 @@ public class Evaluate {
 		Organize();
 	}
 
+	
+	
 	/**
+	 * Método para poder agregar un aspirante de bachillerato al escalafon
 	 * 
 	 * @param name
 	 *            nombre del estudiante de Bachillerato
@@ -149,6 +163,7 @@ public class Evaluate {
 	}
 
 	/**
+	 * Método para desplegar los aspirantes ordenados según su nota del escalafon
 	 * 
 	 * @return text el texto para desplegar todos los aspirantes
 	 */
@@ -161,9 +176,13 @@ public class Evaluate {
 		return text;
 	}
 
+	
+	
 	/**
+	 * Método para encontrar un aspirante según su posicion
 	 * 
 	 * @param posicion
+	 *            Es la posicion del aspirante dentro del escalafon
 	 * @return un aspirante de la lista
 	 */
 	public Aspirer FindAspirer(int posicion) {
@@ -171,7 +190,12 @@ public class Evaluate {
 		return Aspirers.get(index);
 	}
 
+	
+	
 	/**
+	 * Método para modificar un aspirante de secundaria. Se puede modificar el
+	 * nombre, DPI, promedio, tipo, desvinculado, nota de historia, nota de
+	 * matematica, nota de español y nota de aptitud
 	 * 
 	 * @param posicion
 	 *            posicion del aspirante
@@ -199,6 +223,12 @@ public class Evaluate {
 	public void ModifySecondary(int posicion, int dato, String name, String dPI, double Average, boolean Type,
 			boolean Desvinculado, double notaHistoria, double notaMatematica, double notaEspanol, double notaAptitud) {
 		switch (dato) {
+		/* Inicia el caso. Busca la posicion y luego lo modifica. */
+
+		/*
+		 * Modifica según el parametro, el primer caso es nombre y asi se va
+		 * sucesivamente
+		 */
 		case 1:
 			Secondary aspirer = em.find(Secondary.class, FindAspirer(posicion).getId());
 			em.getTransaction().begin();
@@ -261,13 +291,17 @@ public class Evaluate {
 			aspirer.setNotaAptitud(notaAptitud);
 			em.getTransaction().commit();
 			break;
-
 		}
-		Organize();
 
+		Organize();
 	}
 
+	
+	
 	/**
+	 * Método para modificar un aspirante de bachillerato segun su posicion. Se
+	 * puede modificar el nombre, DPI, promedio, tipo, desvinculado y la nota de
+	 * historia
 	 * 
 	 * @param posicion
 	 *            posicion del aspirante
@@ -290,6 +324,12 @@ public class Evaluate {
 			boolean desvinculado, double notaHistoria) {
 		switch (dato) {
 		case 1:
+			/* Inicia el caso. Busca la posicion y luego lo modifica. */
+
+			/*
+			 * Modifica según el parametro, el primer caso es nombre y asi se va
+			 * sucesivamente
+			 */
 			Bachelor aspirer = em.find(Bachelor.class, FindAspirer(posicion).getId());
 			em.getTransaction().begin();
 			aspirer.setName(name);
@@ -335,9 +375,12 @@ public class Evaluate {
 	}
 
 	
+	
 	/**
+	 * Este metodo tiene como objetivo eliminar un aspirante dentro del escalafon
 	 * 
 	 * @param posicion
+	 *            Es la posicion en la que esta el aspirante
 	 */
 	public void DeleteAspirer(int posicion) {
 		Aspirer aspirer = em.find(Aspirer.class, FindAspirer(posicion).getId());
@@ -348,10 +391,14 @@ public class Evaluate {
 	}
 
 	
+	
 	/**
+	 * Método para saber si el dato ingresado por el usuario es mayor al promedio de
+	 * los aspirantes desvinculados
 	 * 
 	 * @param Grade
-	 * @return answer
+	 *            Es la nota dentro dele scalafon del aspirante
+	 * @return answer Retorna la respuesta de tipo String
 	 */
 	public String BetterThan(double Grade) {
 		double number = 0;
@@ -371,9 +418,13 @@ public class Evaluate {
 		return answer;
 	}
 
+	
+	
 	/**
+	 * Método para saber si el 50% del promedio de los aspirantes desvinculados es
+	 * mayor a 80
 	 * 
-	 * @return answer 
+	 * @return answer
 	 */
 	public String High80() {
 		String answer = "";
@@ -394,5 +445,4 @@ public class Evaluate {
 		}
 		return answer;
 	}
-
 }
