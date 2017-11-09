@@ -2,7 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.*;
 
 /**
  * PROPÓSITO: Es la clase que actúa como controlador del modelo. Hace la
@@ -24,7 +26,7 @@ public class Evaluate {
 	 * Constructor de la clase
 	 */
 	public Evaluate() {
-		emf = javax.persistence.Persistence.createEntityManagerFactory("jdbc:mysql://localhost:3306/escalafon?zeroDateTimeBehavior=convertToNull;user=root;password=NoGameNoLife1998");
+		emf = Persistence.createEntityManagerFactory("jdbc:mysql://localhost:3306/escalafon");
 		em = emf.createEntityManager();
 		Aspirers = new ArrayList<Aspirer>();
 	}
