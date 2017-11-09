@@ -29,8 +29,6 @@ public class Evaluate {
 		Aspirers = new ArrayList<Aspirer>();
 	}
 
-	
-	
 	/**
 	 * GET de los aspirantes
 	 * 
@@ -53,9 +51,6 @@ public class Evaluate {
 		em.close();
 	}
 
-	
-	
-	
 	/**
 	 * SET de los aspirantes
 	 * 
@@ -72,9 +67,7 @@ public class Evaluate {
 			Aspirers.add(bachelor);
 		}
 	}
-	
-	
-	
+
 	@SuppressWarnings("unchecked")
 	/**
 	 * Método para organizar la lista de los aspirantes
@@ -99,9 +92,6 @@ public class Evaluate {
 		}
 	}
 
-	
-	
-	
 	/**
 	 * 
 	 * Método para poder agregar un aspirante de secundaria al escalafon
@@ -135,8 +125,6 @@ public class Evaluate {
 		Organize();
 	}
 
-	
-	
 	/**
 	 * Método para poder agregar un aspirante de bachillerato al escalafon
 	 * 
@@ -176,8 +164,6 @@ public class Evaluate {
 		return text;
 	}
 
-	
-	
 	/**
 	 * Método para encontrar un aspirante según su posicion
 	 * 
@@ -190,8 +176,6 @@ public class Evaluate {
 		return Aspirers.get(index);
 	}
 
-	
-	
 	/**
 	 * Método para modificar un aspirante de secundaria. Se puede modificar el
 	 * nombre, DPI, promedio, tipo, desvinculado, nota de historia, nota de
@@ -296,8 +280,6 @@ public class Evaluate {
 		Organize();
 	}
 
-	
-	
 	/**
 	 * Método para modificar un aspirante de bachillerato segun su posicion. Se
 	 * puede modificar el nombre, DPI, promedio, tipo, desvinculado y la nota de
@@ -374,8 +356,6 @@ public class Evaluate {
 		Organize();
 	}
 
-	
-	
 	/**
 	 * Este metodo tiene como objetivo eliminar un aspirante dentro del escalafon
 	 * 
@@ -390,8 +370,6 @@ public class Evaluate {
 		Organize();
 	}
 
-	
-	
 	/**
 	 * Método para saber si el dato ingresado por el usuario es mayor al promedio de
 	 * los aspirantes desvinculados
@@ -418,8 +396,6 @@ public class Evaluate {
 		return answer;
 	}
 
-	
-	
 	/**
 	 * Método para saber si el 50% del promedio de los aspirantes desvinculados es
 	 * mayor a 80
